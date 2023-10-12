@@ -1,0 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.textAreaPlaceholder::placeholder{
+    @apply font-extrabold text-xl text-slate-200
+}
