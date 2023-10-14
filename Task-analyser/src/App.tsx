@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import './App.css'
 import BottomResults from './components/BottomResults'
+import Chat from './components/Chat'
 import Footer from './components/Footer'
 import Navbar from './components/Navbar'
 import ResultBox from './components/ResultBox'
@@ -28,10 +29,12 @@ function App() {
        setParagraphs={setParagraphs}
        characters={characters} 
        setCharacters= {setCharacters}
+       pronouns= {pronouns}
+       setPronouns={setPronouns}
        />
        
 
-      <TextArea 
+      <TextArea
       words={words} 
       setWords={setWords}
       sentence={sentences} 
@@ -40,6 +43,8 @@ function App() {
       setParagraphs={setParagraphs}
       characters={characters} 
       setCharacters= {setCharacters}
+      pronouns={pronouns}
+      setPronouns= {setPronouns}
       />
       <BottomResults/>
       <Footer/>

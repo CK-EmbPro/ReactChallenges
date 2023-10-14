@@ -1,6 +1,5 @@
 import React, { useRef, useEffect, useState, ChangeEvent } from 'react';
-import { pronounsArray } from '../data/pronounsArray';
-
+import ResultBox from './ResultBox';
 
 interface TextAreaProps {
   words: number;
@@ -11,12 +10,6 @@ interface TextAreaProps {
   setParagraphs: React.Dispatch<React.SetStateAction<number>>;
   characters: number;
   setCharacters: React.Dispatch<React.SetStateAction<number>>;
-  pronouns: number;
-  setPronouns: React.Dispatch<React.SetStateAction<number>>
-}
- 
-interface PronounsType{
-  pronounsArray: string[];
 }
 
 const Chat = ({
@@ -28,8 +21,6 @@ const Chat = ({
   setParagraphs,
   characters,
   setCharacters,
-  pronouns,
-  setPronouns
 }: TextAreaProps) => {
   let textAreaRef = useRef<HTMLTextAreaElement>(null);
   const [textAreaValue, setTextAreaValue] = useState<string>('');
@@ -45,14 +36,12 @@ const Chat = ({
 
   useEffect(() => {
     let charactersArray: string[] = textAreaValue.split('');
-    let wordsArray:string[]= textAreaValue.split(" ");
     let sentenceCount: number = 0;
     let paragraphsCount: number = 0;
     let wordsCount: number = 0;
     let isInsideWord: boolean = false;
     let spaceCount: number = 0;
-    let pronounsCount: number = 0;
-  
+    // let wasPreviousCharacterNewLine: boolean = false;
 
     for (let i = 0; i < textAreaValue.length; i++) {
       if (textAreaValue[i] === ' ') {
@@ -72,31 +61,19 @@ const Chat = ({
     }
 
     if (textAreaValue.trim() === '') {
-    
+      // If the text area is empty, set sentence and paragraphs to 0
       setSentence(0);
-      
+      setParagraphs(0);
     } else {
-      
+      // Otherwise, update values based on the logic
       setSentence(sentenceCount || 1);
-      
+      setParagraphs(paragraphsCount || 1);
     }
-    
-    const regex = new RegExp(`\\b(${pronounsArray.join("|")})\\b`, 'gi');
-
-    wordsArray.forEach((word)=> {
-     
-      const matches = word.match(regex)
-      if(matches){
-        pronounsCount +=matches.length;
-      }
-    })
 
     setWords(wordsCount);
     setCharacters(charactersArray.length);
-    setPronouns(pronounsCount); //
   }, [textAreaValue]);
 
-  
   useEffect(() => {
     if (textAreaRef.current) {
       textAreaRef.current.focus();

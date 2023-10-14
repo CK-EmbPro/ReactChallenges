@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { pronounsArray } from '../data/pronounsArray'
 
 interface ResultsBoxProps{
   words: number,
@@ -8,10 +9,12 @@ interface ResultsBoxProps{
   paragraphs: number,
   setParagraphs: React.Dispatch<React.SetStateAction<number>>
   characters: number,
-  setCharacters: React.Dispatch<React.SetStateAction<number>>
+  setCharacters: React.Dispatch<React.SetStateAction<number>>,
+  pronouns: number,
+  setPronouns: React.Dispatch<React.SetStateAction<number>>
 }
 
-const ResultBox = ({words, sentence, paragraphs, characters}:ResultsBoxProps) => {
+const ResultBox = ({words, sentence, paragraphs, characters, pronouns}:ResultsBoxProps) => {
 
 
   return (
@@ -20,7 +23,7 @@ const ResultBox = ({words, sentence, paragraphs, characters}:ResultsBoxProps) =>
         <p className='flex flex-col items-center text-black opacity-50 font-bold'>Characters <span>{characters}</span></p>
         <p className='flex flex-col items-center text-black opacity-50 font-bold'>Sentences <span>{sentence}</span></p>
         <p className='flex flex-col items-center text-black opacity-50 font-bold'>Paragraphs <span>{paragraphs}</span></p>
-        <p className='flex flex-col items-center text-black opacity-50 font-bold'>Pronouns <span>0</span></p>
+        <p className='flex flex-col items-center text-black opacity-50 font-bold'>Pronouns <span>{pronouns}</span></p>
     </div>
   )
 }
