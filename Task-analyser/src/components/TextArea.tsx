@@ -12,7 +12,9 @@ interface TextAreaProps {
   characters: number;
   setCharacters: React.Dispatch<React.SetStateAction<number>>;
   pronouns: number;
-  setPronouns: React.Dispatch<React.SetStateAction<number>>
+  setPronouns: React.Dispatch<React.SetStateAction<number>>,
+  longestWord: string;
+  setLongestWord: React.Dispatch<React.SetStateAction<string>>;
 }
  
 interface PronounsType{
@@ -29,15 +31,26 @@ const Chat = ({
   characters,
   setCharacters,
   pronouns,
-  setPronouns
+  setPronouns, 
+  longestWord,
+  setLongestWord
 }: TextAreaProps) => {
+
   let textAreaRef = useRef<HTMLTextAreaElement>(null);
   const [textAreaValue, setTextAreaValue] = useState<string>('');
-
+ 
   const handleTextAreaInput = (e: ChangeEvent<HTMLTextAreaElement>) => {
     const newText = e.target.value;
     setTextAreaValue(newText);
+
+
+    
+
+
+    
   };
+
+
 
   const paragraphsCount = textAreaValue.split('\n').filter((line) => line.trim() !== '').length;
 
@@ -45,13 +58,14 @@ const Chat = ({
 
   useEffect(() => {
     let charactersArray: string[] = textAreaValue.split('');
-    let wordsArray:string[]= textAreaValue.split(" ");
     let sentenceCount: number = 0;
     let paragraphsCount: number = 0;
     let wordsCount: number = 0;
     let isInsideWord: boolean = false;
     let spaceCount: number = 0;
     let pronounsCount: number = 0;
+    let wordsArray:string[]= textAreaValue.split(" ");
+
   
 
     for (let i = 0; i < textAreaValue.length; i++) {
@@ -91,9 +105,35 @@ const Chat = ({
       }
     })
 
+    
+    let longestWord = "";
+      const words = textAreaValue.split(" ");
+
+      for (let i = 0; i < wordsArray.length; i++) {
+        if(wordsArray.length ==1) {
+          longestWord = wordsArray[0]
+        }else{
+
+       
+        for (let j = i + 1; j < wordsArray.length; j++) {
+          if (wordsArray[i].length < wordsArray[j].length) {
+            longestWord = wordsArray[j];
+          } else if (wordsArray[i].length > wordsArray[j].length) {
+            longestWord = wordsArray[i];
+          }else if(wordsArray[i].length ==wordsArray[j].length){
+            longestWord = wordsArray[i]
+          }
+        }
+      }
+      }
+
+    setLongestWord(longestWord)
     setWords(wordsCount);
     setCharacters(charactersArray.length);
     setPronouns(pronounsCount); //
+
+      console.log("Longest word:", longestWord);
+    
   }, [textAreaValue]);
 
   

@@ -16,6 +16,8 @@ function App() {
   const [sentences, setSentences] = useState<number>(0)
   const [paragraphs, setParagraphs] = useState<number>(0)
   const [pronouns, setPronouns] = useState<number>(0)
+  const [longestWord, setLongestWord] = useState<string>("")
+  const [averageReadTime, setAverageReadTime] = useState<number>(0)
 
   return (
     <div className='bg-gray-100 min-h-screen flex flex-col '>
@@ -45,8 +47,15 @@ function App() {
       setCharacters= {setCharacters}
       pronouns={pronouns}
       setPronouns= {setPronouns}
+      longestWord ={longestWord}
+      setLongestWord= {setLongestWord}
       />
-      <BottomResults/>
+      <BottomResults
+      longestWord= {longestWord}
+      setLongestWord = {setLongestWord}
+      averageReadTime= {averageReadTime}
+      setAverageReadTime= {setAverageReadTime}
+      />
       <Footer/>
     </div>
   )
