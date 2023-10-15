@@ -49,6 +49,8 @@ function App() {
       setPronouns= {setPronouns}
       longestWord ={longestWord}
       setLongestWord= {setLongestWord}
+      averageReadTime={averageReadTime}
+      setAverageReadTime= {setAverageReadTime}
       />
       <BottomResults
       longestWord= {longestWord}

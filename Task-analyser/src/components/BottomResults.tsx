@@ -15,7 +15,7 @@ const BottomResults = ({longestWord, setLongestWord, averageReadTime, setAverage
     <div className="bg-white w-[75vw] mx-auto flex justify-around py-3 font-bold  text-black opacity-60 ">
         <p className='flex items-center gap-1 '>Average Reading Time: 
             <span >
-                <AiOutlineMinus/>
+            {longestWord ? `~${averageReadTime} minute`:  <AiOutlineMinus/>}
             </span>
         </p>
 

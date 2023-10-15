@@ -15,6 +15,8 @@ interface TextAreaProps {
   setPronouns: React.Dispatch<React.SetStateAction<number>>,
   longestWord: string;
   setLongestWord: React.Dispatch<React.SetStateAction<string>>;
+  averageReadTime: number;
+  setAverageReadTime: React.Dispatch<React.SetStateAction<number>>
 }
  
 interface PronounsType{
@@ -33,7 +35,9 @@ const Chat = ({
   pronouns,
   setPronouns, 
   longestWord,
-  setLongestWord
+  setLongestWord,
+  averageReadTime,
+  setAverageReadTime
 }: TextAreaProps) => {
 
   let textAreaRef = useRef<HTMLTextAreaElement>(null);
@@ -127,12 +131,18 @@ const Chat = ({
       }
       }
 
+    const adultWPM = 255;
+    let numOfWords = textAreaValue.trim().split(/\s+/).length;
+
+    let averageReadTime = Math.ceil(numOfWords / adultWPM);
+
+    setAverageReadTime(averageReadTime)
     setLongestWord(longestWord)
     setWords(wordsCount);
     setCharacters(charactersArray.length);
     setPronouns(pronounsCount); //
 
-      console.log("Longest word:", longestWord);
+      console.log("average reading time:", averageReadTime);
     
   }, [textAreaValue]);
 
