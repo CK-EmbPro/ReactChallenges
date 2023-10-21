@@ -20,6 +20,7 @@ const PasswdGen = ({rangeValue, setRangeValue, isLowercase, setisLowercase, isUp
 
   const [passwordString, setpasswordString] = useState("")
   const [randomStringState, setrandomString] = useState("")
+  const [passwordStrength, setpasswordStrength] = useState("")
   
 
   const  generateRandomString = (passwordLen:number) : void=> {
@@ -51,6 +52,28 @@ const PasswdGen = ({rangeValue, setRangeValue, isLowercase, setisLowercase, isUp
 
       setpasswordString(randomStringWord)
       setrandomString(randomStringWord)
+
+      const hasUppercase = /[A-Z]/.test(randomStringWord);
+    const hasLowercase = /[a-z]/.test(randomStringWord);
+    const hasNumber = /\d/.test(randomStringWord);
+    const hasSpecialChar = /[^A-Za-z0-9]/.test(randomStringWord);
+
+    if (hasUppercase && hasLowercase && hasNumber && hasSpecialChar) {
+      setpasswordStrength("Hard");
+    } else if (
+      (hasUppercase && hasLowercase && hasNumber && hasSpecialChar) ||
+      (hasUppercase && hasLowercase && hasNumber) ||
+      (hasUppercase && hasLowercase && hasSpecialChar) ||
+      (hasUppercase && hasNumber && hasSpecialChar) ||
+      (hasLowercase && hasNumber && hasSpecialChar)
+    ) {
+      setpasswordStrength("Medium");
+    } else {
+      setpasswordStrength("Easy");
+    }
+    
+    
+    
     }
 
     useEffect(() => {
@@ -86,13 +109,14 @@ const PasswdGen = ({rangeValue, setRangeValue, isLowercase, setisLowercase, isUp
             </button>
           </div>
 
-          <p className={`font-bold 
-            ${randomStringState.length<8 ? "text-[#dc3545]" :""} 
-            
-            `}>
-            {randomStringState.length <8 ? "Too short" : ""}
-            {/* {randomString} */}
-          </p>
+          <p
+          className={`font-bold ${passwordStrength === 'Easy' || randomStringState.length ==0 || (randomStringState.length < 8 && randomStringState.length !== 0) ? 'text-[#dc3545]' : ''} ${
+            passwordStrength === 'Medium' && randomStringState.length > 8 ? 'text-[#FFA500]' : ''
+          } ${passwordStrength === 'Hard' && randomStringState.length > 8 ? 'text-[#008000]' : ''}`}
+        >
+          
+          {(randomStringState.length < 8 && randomStringState.length !== 0)? "Too short" : randomStringState.length ==0 ? "Please select some criteria" : passwordStrength === 'Easy' ? 'Easy' : passwordStrength === 'Medium' ? 'Medium' : passwordStrength === 'Hard' ? 'Hard' : ''}
+        </p>
         </div>
 
 
