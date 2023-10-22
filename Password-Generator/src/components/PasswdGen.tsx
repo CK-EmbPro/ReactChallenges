@@ -1,4 +1,5 @@
 import React, {ChangeEvent, useEffect, useState} from 'react'
+import {CopyToClipboard} from 'react-copy-to-clipboard';
 import PasswdGif from '../assets/gif/password.gif'
 import RefreshIcon from '../assets/icons/refresh.svg'
 import CopyIcon from '../assets/icons/copy.svg'
@@ -18,9 +19,10 @@ interface PasswdGenProps {
 
 const PasswdGen = ({rangeValue, setRangeValue, isLowercase, setisLowercase, isUppercase, setisUppercase, isNumbers, setisNumbers,isSpecialChars, setisSpecialChars}: PasswdGenProps) => {
 
-  const [passwordString, setpasswordString] = useState("")
-  const [randomStringState, setrandomString] = useState("")
-  const [passwordStrength, setpasswordStrength] = useState("")
+  const [passwordString, setpasswordString] = useState<string>("")
+  const [randomStringState, setrandomString] = useState<string>("")
+  const [passwordStrength, setpasswordStrength] = useState<string>("")
+  const [isCopied, setisCopied] = useState<boolean>(false)
   
 
   const  generateRandomString = (passwordLen:number) : void=> {
@@ -87,6 +89,14 @@ const PasswdGen = ({rangeValue, setRangeValue, isLowercase, setisLowercase, isUp
       console.log("uppercase", isUppercase)
       console.log("numbers", isNumbers)
     
+
+    const handleCopyToClipboard = (): void=>{
+      setisCopied(true)
+
+      setTimeout(()=>{
+        setisCopied(false)
+      }, 1000)
+    }
   
   return (
     <div className='border-t-2xl flex flex-col items-center gap-3 pt-4'>
@@ -103,10 +113,12 @@ const PasswdGen = ({rangeValue, setRangeValue, isLowercase, setisLowercase, isUp
               </button>
             </div>
 
+            <CopyToClipboard text={passwordString} onCopy={handleCopyToClipboard}>
             <button className='flex gap-2 bg-[#33cccc] rounded-[12px] font-bold justify-center border h-full px-3 items-center'>
               <img className='w-[14px]' src={CopyIcon} alt="" />
-              Copy
+              {isCopied ? "Copied" : "Copy"}
             </button>
+            </CopyToClipboard>
           </div>
 
           <p
