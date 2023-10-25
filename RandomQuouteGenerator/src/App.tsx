@@ -6,7 +6,7 @@ import Twitter from './assets/icons/twitter.svg'
 import Whatsapp from './assets/icons/whatsapp.svg'
 import axios from 'axios'
 import { fetchQuotes } from './utils'
-// import {CopyToClipboard} from 'react-copy-to-clipboard'
+import {CopyToClipboard} from 'react-copy-to-clipboard';
 
 const App =  () => {
 
@@ -72,6 +72,7 @@ const App =  () => {
     
   }
 
+ 
    console.log("the index is ", index)
   
   return (
@@ -103,14 +104,17 @@ const App =  () => {
 
           <span className='flex w-[25%] justify-between items-center'>
             <p className='text-[20px] font-[Poppins]'> share at:</p> 
-              {/* <CopyToClipboard > */}
-              <button  >
+              
+              <button>
+                <a target="_blank" href={`https://twitter.com/intent/tweet?text=${quoteToDisplay.quote}`}>
                 <img src={Twitter} />
+                </a>
               </button>
-              {/* </CopyToClipboard> */}
-
+              
               <button >
+                <a target="_blank" href={`https://api.whatsapp.com/send/?text=${quoteToDisplay.quote}`}>
                 <img src={Whatsapp} />
+                </a>
               </button>
           </span>
         </div>
