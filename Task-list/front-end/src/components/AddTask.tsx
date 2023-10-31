@@ -1,12 +1,20 @@
-import React from 'react'
+import React, { SetStateAction } from 'react'
 import {TiTimes} from 'react-icons/ti'
 
-const AddTask = () => {
+interface AddTaskProps{
+  closeAddTaskModal: React.Dispatch<SetStateAction<boolean>>
+}
+
+const AddTask = ({closeAddTaskModal}: AddTaskProps) => {
   return (
-    <div className='bg-white w-[40vw] p-10 font-[Poppins] rounded-3xl flex flex-col gap-6'>
+    <div className='w-[100vw] h-[100vh] absolute top-0 left-0'>
+
+    
+    <div className=' w-[100vw] h-[100vh] absolute top-0 left-0 flex justify-center items-center  bg-[#443d3d] opacity-[.6]'></div>
+    <div className='absolute left-[30vw] top-[33vh] bg-white w-[40vw] h-[350px] p-10 font-[Poppins] rounded-3xl flex flex-col gap-6'>
       <div className=' flex justify-between items-center'>
         <h1 className='text-xl font-bold'>Add Task</h1>
-        <TiTimes className='text-2xl hover:cursor-pointer'/>
+        <TiTimes onClick={()=> closeAddTaskModal(false)} className='text-2xl hover:cursor-pointer'/>
       </div>
 
       <form action="" className='flex flex-col gap-4'>
@@ -28,6 +36,8 @@ const AddTask = () => {
         </div>
       </form>
 
+    
+    </div>
     
     </div>
   )

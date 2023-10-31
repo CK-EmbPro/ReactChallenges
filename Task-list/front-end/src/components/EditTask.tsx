@@ -1,12 +1,22 @@
-import React from 'react'
+import React, { SetStateAction } from 'react'
 import {TiTimes} from 'react-icons/ti'
 
-const EditTask = () => {
+interface EditTaskProps{
+  closeEditTaskModal: React.Dispatch<SetStateAction<boolean>>
+}
+
+const EditTask = ({closeEditTaskModal}: EditTaskProps) => {
   return (
-    <div className='bg-white w-[40vw] p-10 font-[Poppins] rounded-3xl flex flex-col gap-6 tracking-[.4px]'>
+  
+
+    <div className='w-[100vw] h-[100vh] absolute top-0 left-0'>
+
+    
+    <div className=' w-[100vw] h-[100vh] absolute top-0 left-0 flex justify-center items-center bg-[#443d3d] opacity-[.6]'></div>
+    <div className='absolute left-[30vw] top-[33vh] bg-white w-[40vw] h-[350px] p-10 font-[Poppins] rounded-3xl flex flex-col gap-6 border border-green-400'>
       <div className=' flex justify-between items-center'>
         <h1 className='text-xl font-bold'>Edit Task</h1>
-        <TiTimes className='text-2xl hover:cursor-pointer'/>
+        <TiTimes onClick={()=> closeEditTaskModal(false)} className='text-2xl hover:cursor-pointer'/>
       </div>
 
       <form action="" className='flex flex-col gap-4'>
@@ -24,10 +34,12 @@ const EditTask = () => {
         </div>
 
         <div className='flex justify-end'>
-          <button  className='bg-[#713fff]  p-2 w-[90px] text-white font-bold rounded-xl'>Edit</button>
+        <button  className='bg-[#713fff]  p-2 w-[90px] text-white font-bold rounded-xl'>Edit</button>
         </div>
       </form>
 
+    
+    </div>
     
     </div>
   )
