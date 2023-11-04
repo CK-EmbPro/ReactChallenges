@@ -1,0 +1,26 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "To develop MERN-Stack TaskList",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://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@github.com/CK-EmbPro/ReactChallenges.git"
+  },
+  "author": "CK-Debrice",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/CK-EmbPro/ReactChallenges/issues"
+  },
+  "homepage": "https://github.com/CK-EmbPro/ReactChallenges#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "mongoose": "^8.0.0"
+  }
+}

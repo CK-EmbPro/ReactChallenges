@@ -1,4 +1,4 @@
-import React, { SetStateAction } from 'react'
+import React, { SetStateAction, useState } from 'react'
 import {TiTimes} from 'react-icons/ti'
 
 interface EditTaskProps{
@@ -6,6 +6,10 @@ interface EditTaskProps{
 }
 
 const EditTask = ({closeEditTaskModal}: EditTaskProps) => {
+  const [highState, setHighState] = useState<boolean>(false)
+  const [mediumState, setMediumState] = useState<boolean>(false)
+  const [lowState, setLowState] = useState<boolean>(false)
+
   return (
   
 
@@ -28,9 +32,9 @@ const EditTask = ({closeEditTaskModal}: EditTaskProps) => {
 
         <p className='font-bold text-[#595a5d]'>Priority</p>
         <div className='flex gap-7'>
-          <div className='text-center hover:cursor-pointer border border-[#f73446] text-[#f73446] w-[100px] rounded-lg py-1'>High</div>
-          <div className='text-center hover:cursor-pointer border border-[#ffbd21] text-[#ffbd21] w-[100px] rounded-lg py-1'>Medium</div>
-          <div className='text-center hover:cursor-pointer border-none bg-green-500 text-white w-[100px] rounded-lg py-1'>Low</div>
+        <div onClick={()=>setHighState(!highState)} className={`${highState ? "bg-[#f73446] text-white": ""} text-center hover:cursor-pointer border  border-[#f73446] text-[#f73446] w-[100px] rounded-lg py-1`}>High</div>
+          <div onClick={()=>setMediumState(!mediumState)} className={`${mediumState ? "bg-[#ffbd21] text-white": ""} text-center hover:cursor-pointer border border-[#ffbd21] text-[#ffbd21] w-[100px] rounded-lg py-1`}>Medium</div>
+          <div onClick={()=>setLowState(!lowState)} className={`${lowState ? "bg-[#0ec10e] text-[white] "  : ""} text-center hover:cursor-pointer  border border-[#0ec10e]  text-[#0ec10e] w-[100px] rounded-lg py-1`}>Low</div>
         </div>
 
         <div className='flex justify-end'>

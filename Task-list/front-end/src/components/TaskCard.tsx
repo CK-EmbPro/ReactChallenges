@@ -1,4 +1,4 @@
-import React, { SetStateAction, useState } from 'react'
+import React, { SetStateAction, useEffect, useState } from 'react'
 import CircularProgress from './CircularProgress'
 import Edit from '../assets/icons/edit.svg'
 import Delete from '../assets/icons/delete.svg'
@@ -13,10 +13,30 @@ const TaskCard = ({setOpenEditTaskModal, setOpenDeleteTaskModal}: TaskCardProps)
   const [done, setDone] = useState<boolean>(false)
   const [inProgress, setInProgress] = useState<boolean>(false)
   const [toDo, setTodo] = useState<boolean>(true)
+  const [progressPercent, setProgressPercent] = useState<number>(0)
 
-  const handleProgressBtns = ():void=>{
-
+ const handleBtnsProgress = ():void=>{
+  if(toDo){
+    setInProgress(true)
+    setTodo(false)
+    setDone(false)
+    setProgressPercent(50)
   }
+  if(inProgress) {
+    setDone(true)
+    setInProgress(false)
+    setTodo(false)
+    setProgressPercent(100)
+  }if(done){
+    setTodo(true)
+    setDone(false)
+    setInProgress(false)
+    setProgressPercent(0)
+  }
+ }
+
+
+  
   return (
     <div className='flex items-center justify-between bg-white  max-h-[140px] h-[90px] my-10 rounded-3xl px-10'>
 
@@ -30,22 +50,22 @@ const TaskCard = ({setOpenEditTaskModal, setOpenDeleteTaskModal}: TaskCardProps)
         <p className='font-bold text-lg text-[#f73446]'>High</p>
       </div>
 
-      <div className='relative w-[130px] h-[50px]' onClick={handleProgressBtns}>
-        <button className='bg-[#cbcccd] text-[#4c4c4c] px-3 py-[4px] rounded-lg absolute  top-2 left-7'>
+      <div className='relative w-[130px] h-[50px]' onClick={handleBtnsProgress}>
+        <button className={`bg-[#cbcccd] text-[#4c4c4c] px-3 py-[4px] rounded-lg absolute  ${!toDo ? "hidden" : ""} top-2 left-7`}>
           To Do
         </button>
 
-        <button className='bg-[#cbcccd] text-[#4c4c4c] px-3 py-[4px] rounded-lg absolute hidden left-2 top-2'>
+        <button className={`bg-[#cbcccd] text-[#4c4c4c] px-3 py-[4px] rounded-lg absolute ${!inProgress ? "hidden" : ""} left-2 top-2`}>
           In progress
         </button>
 
-        <button className='bg-[#cbcccd] text-[#4c4c4c] px-3 py-[4px] rounded-lg absolute hidden  left-7 top-2'>
+        <button className={`bg-[#cbcccd] text-[#4c4c4c] px-3 py-[4px] rounded-lg absolute  ${!done ? "hidden" : ""}  left-7 top-2`}>
           Done
         </button>
       </div>
       
 
-      <CircularProgress/>
+      <CircularProgress progressPercent ={progressPercent} />
 
       <div className='flex gap-6'>
         <img onClick={()=>setOpenEditTaskModal(true)} className='hover:cursor-pointer' src={Edit}/>

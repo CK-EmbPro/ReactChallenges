@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import CircularProgress from './components/CircularProgress'
 import TaskCard from './components/TaskCard'
 import {AiOutlinePlus} from 'react-icons/ai'
 import AddTask from './components/AddTask'
