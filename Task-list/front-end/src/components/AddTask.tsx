@@ -3,19 +3,25 @@ import toast, { Toaster } from 'react-hot-toast';
 import {TiTimes} from 'react-icons/ti'
 
 interface AddTaskProps{
-  closeAddTaskModal: React.Dispatch<SetStateAction<boolean>>
+  closeAddTaskModal: React.Dispatch<SetStateAction<boolean>>,
+  task: string,
+  setTask: React.Dispatch<SetStateAction<string>>
+  setPriority: React.Dispatch<SetStateAction<string>>
+  priority:string
+  handleSubmit: (e:FormEvent<HTMLFormElement>)=>void
 }
 
-const AddTask = ({closeAddTaskModal}: AddTaskProps) => {
+
+
+const AddTask = ({closeAddTaskModal, task, priority, setTask, setPriority, handleSubmit}: AddTaskProps) => {
 
   const baseUrl = "http://localhost:8000"
 
   const [highState, setHighState] = useState<boolean>(false)
   const [mediumState, setMediumState] = useState<boolean>(false)
   const [lowState, setLowState] = useState<boolean>(true)
-  const [priority, setPriority] = useState<string>("")
-  const [task, setTask] = useState<string>("")
-  const [toastState, setToastState] = useState<boolean >(false)
+ 
+
 
 
   
@@ -42,40 +48,7 @@ const AddTask = ({closeAddTaskModal}: AddTaskProps) => {
   }
   
 
-  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-  
-    let submit = await fetch(`${baseUrl}/addTodo`, {
-      method: "POST",
-      body: JSON.stringify({
-        task,
-        priority
-      }),
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    });
-  
-    if (submit.ok) {
-      setToastState(true); 
-      console.log("toastState: true");
-  
-      
-      toast.success("Success");
-  
-      setTimeout(() => {
-       
-        closeAddTaskModal(false);
-        
-       
-        setToastState(false);
-        console.log("toastState: false");
-      }, 2000);
-    }
-  }
-  
-  console.log("Toaststate is", toastState)
-  
+
 
   return (
     <div className='w-[100vw] h-[100vh] absolute top-0 left-0'>

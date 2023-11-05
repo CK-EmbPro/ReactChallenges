@@ -10,6 +10,17 @@ const getTodos = async (req, res) => {
    
 }
 
+const getTodoById = async (req, res) => {
+    let {id} = req.params
+    try {
+        let todo = await TodoModel.findById(id)
+        res.send(todo)
+    } catch (error) {
+        res.status(500).send(error.message)
+    }
+   
+}
+
 
 const addTodo = async (req, res) => {
     let {task, priority } = req.body
@@ -62,6 +73,7 @@ const deleteTodo = async (req, res) => {
 
 module.exports = {
     getTodos,
+    getTodoById,
     addTodo,
     updateTodo,
     deleteTodo,

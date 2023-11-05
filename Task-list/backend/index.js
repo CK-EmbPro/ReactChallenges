@@ -4,7 +4,7 @@ const cors = require('cors');
 const routes = require("./routes/todoRoutes.js")
 const server = express();
 
-const dbUrl = "mongodb+srv://CkDebMan:hJgx4hjQi3eB7gZS@cluster0.sknmlkn.mongodb.net/?retryWrites=true&w=majority"
+const dbUrl = "mongodb+srv://ckDebMan:Bj8MmSnzrmbrjAoj@cluster0.sknmlkn.mongodb.net/?retryWrites=true&w=majority"
 
 server.use(cors({
     origin: "http://localhost:5173"
@@ -16,7 +16,7 @@ server.use(routes)
 mongoose.connect(dbUrl)
 
 const db= mongoose.connection;
-db.on('error', err => console.log("not connected to db"))
+db.on('error', err => console.log("not connected to db"+ err.message))
 
 db.once('open',()=>{
     console.log("connected successfully to db")
