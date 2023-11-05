@@ -114,8 +114,8 @@ const PasswdGen = ({rangeValue, setRangeValue, isLowercase, setisLowercase, isUp
             </div>
 
             <CopyToClipboard text={passwordString} onCopy={handleCopyToClipboard}>
-            <button className='flex gap-2 bg-[#33cccc] rounded-[12px] font-bold justify-center border h-full px-3 items-center'>
-              <img className='w-[14px]' src={CopyIcon} alt="" />
+            <button className={`flex gap-2 bg-[#33cccc] rounded-[12px] font-bold justify-center border h-full px-3 items-center `}>
+              <img className={`w-[14px] }`} src={CopyIcon} alt="" />
               {isCopied ? "Copied" : "Copy"}
             </button>
             </CopyToClipboard>
