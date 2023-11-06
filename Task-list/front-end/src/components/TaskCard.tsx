@@ -8,9 +8,13 @@ interface TaskCardProps{
   setOpenEditTaskModal: React.Dispatch<SetStateAction<boolean>>
   setOpenDeleteTaskModal: React.Dispatch<SetStateAction<boolean>>
   setEditId: React.Dispatch<SetStateAction<string>>
+  setDeleteId: React.Dispatch<SetStateAction<string>>
+  handleSubmit: (e:FormEvent<HTMLFormElement>)=>void
   task: string
   priority: string
-  handleSubmit: (e:FormEvent<HTMLFormElement>)=>void
+  highState: boolean
+  mediumState:boolean
+  lowState:boolean
 }
 
 interface Todo{
@@ -19,7 +23,7 @@ interface Todo{
   _id: ObjectId
 }
 
-const TaskCard = ({setOpenEditTaskModal,setEditId, setOpenDeleteTaskModal, task, priority,handleSubmit}: TaskCardProps) => {
+const TaskCard = ({setOpenEditTaskModal,setEditId,setDeleteId, setOpenDeleteTaskModal, task, priority, highState,mediumState, lowState, handleSubmit}: TaskCardProps) => {
   
   const [done, setDone] = useState<boolean>(false)
   const [inProgress, setInProgress] = useState<boolean>(false)
@@ -35,7 +39,7 @@ const TaskCard = ({setOpenEditTaskModal,setEditId, setOpenDeleteTaskModal, task,
     })
 
     let allTodos = await todosRes.json()
-    console.log("All todos :",allTodos)
+   
 
     setTodoArray(allTodos)
   }
@@ -63,7 +67,7 @@ const TaskCard = ({setOpenEditTaskModal,setEditId, setOpenDeleteTaskModal, task,
   }
  }
 
- console.log("My todoArray", todoArray)
+
 
  
   return (
@@ -81,7 +85,7 @@ const TaskCard = ({setOpenEditTaskModal,setEditId, setOpenDeleteTaskModal, task,
   
         <div>
           <p className='text-[#7d8592]'>Priority</p>
-          <p className='font-bold text-lg text-[#f73446]'>{todo.priority}</p>
+          <p className={`font-bold text-lg ${todo.priority==="high" ? "text-[#f73446]": ""} ${todo.priority==="medium" ? "text-[#ffbd21]" :""} ${todo.priority==="low" ? "text-[#0ec10e]":""} `}>{todo.priority}</p>
         </div>
   
         <div className='relative w-[130px] h-[50px]' onClick={handleBtnsProgress}>
@@ -107,7 +111,10 @@ const TaskCard = ({setOpenEditTaskModal,setEditId, setOpenDeleteTaskModal, task,
             setEditId(todo._id.toString())
             
             }}  className='hover:cursor-pointer' src={Edit}/>
-          <img onClick={()=> setOpenDeleteTaskModal(true)} className='hover:cursor-pointer' src={Delete}/>
+          <img onClick={()=> {
+            setOpenDeleteTaskModal(true)
+            setDeleteId(todo._id.toString())
+          }} className='hover:cursor-pointer' src={Delete}/>
         </div>
         </div>
        

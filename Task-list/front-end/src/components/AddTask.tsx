@@ -4,23 +4,26 @@ import {TiTimes} from 'react-icons/ti'
 
 interface AddTaskProps{
   closeAddTaskModal: React.Dispatch<SetStateAction<boolean>>,
-  task: string,
   setTask: React.Dispatch<SetStateAction<string>>
   setPriority: React.Dispatch<SetStateAction<string>>
-  priority:string
   handleSubmit: (e:FormEvent<HTMLFormElement>)=>void
+  setHighState:  React.Dispatch<SetStateAction<boolean>>
+  setMediumState: React.Dispatch<SetStateAction<boolean>>
+  setLowState:  React.Dispatch<SetStateAction<boolean>>
+  highState: boolean
+  task: string,
+  mediumState: boolean
+  lowState: boolean
+  priority:string
 }
 
 
 
-const AddTask = ({closeAddTaskModal, task, priority, setTask, setPriority, handleSubmit}: AddTaskProps) => {
+const AddTask = ({closeAddTaskModal, task, priority,highState, mediumState, lowState, setTask, setPriority, handleSubmit, setHighState, setMediumState, setLowState}: AddTaskProps) => {
 
   const baseUrl = "http://localhost:8000"
 
-  const [highState, setHighState] = useState<boolean>(false)
-  const [mediumState, setMediumState] = useState<boolean>(false)
-  const [lowState, setLowState] = useState<boolean>(true)
- 
+
 
 
 
@@ -42,7 +45,7 @@ const AddTask = ({closeAddTaskModal, task, priority, setTask, setPriority, handl
   }, [highState, mediumState, lowState])
   
 
-  console.log("Priority status ", priority)
+
   const handleTaskChange = (e: ChangeEvent<HTMLInputElement>):void=>{
     setTask(e.target.value)
   }
@@ -107,9 +110,7 @@ const AddTask = ({closeAddTaskModal, task, priority, setTask, setPriority, handl
 
     
     </div>
-    {/* {toastState && <Toaster/>} */}
     
-    <Toaster/>
     </div>
   )
 }

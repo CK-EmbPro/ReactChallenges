@@ -14,6 +14,11 @@ const App = () => {
   const [task, setTask] = useState<string>("")
   const [toastState, setToastState] = useState<boolean >(false)
   const [editId, setEditId] = useState<string>("")
+  const [deleteId, setDeleteId] = useState<string>("")
+  const [highState, setHighState] = useState<boolean>(false)
+  const [mediumState, setMediumState] = useState<boolean>(false)
+  const [lowState, setLowState] = useState<boolean>(true)
+ 
 
 
   const baseUrl = "http://localhost:8000"
@@ -35,7 +40,7 @@ const App = () => {
   
     if(submit.ok) {
       setToastState(true); 
-      console.log("toastState: true");
+      
       
       
       toast.success("Success");
@@ -46,7 +51,7 @@ const App = () => {
         
        
         setToastState(false);
-        console.log("toastState: false");
+        
       }, 2000);
     }
   }
@@ -58,12 +63,12 @@ const App = () => {
         <h1 className='text-[40px] font-bold'>Task List</h1>
         <button onClick={()=> setOpenAddTaskModal(true)} className='flex items-center justify-center h-[50px] border-none font-bold bg-[#713fff] gap-4 rounded-xl p-2 w-[150px] text-white'><AiOutlinePlus className='text-lg'/>Add Task</button>
       </div>
-    <TaskCard setEditId={setEditId} setOpenEditTaskModal={setOpenEditTaskModal} setOpenDeleteTaskModal={setOpenDeleteTaskModal} task={task} priority={priority} handleSubmit={handleSubmit} />
+    <TaskCard highState ={highState} lowState = {lowState} mediumState= {mediumState} setEditId={setEditId}  setDeleteId={setDeleteId} setOpenEditTaskModal={setOpenEditTaskModal} setOpenDeleteTaskModal={setOpenDeleteTaskModal} task={task} priority={priority} handleSubmit={handleSubmit} />
     </div> 
 
-    {openAddTaskModal && <AddTask closeAddTaskModal = {setOpenAddTaskModal} task= {task} priority={priority} setPriority={setPriority} setTask={setTask} handleSubmit={handleSubmit} />}
+    {openAddTaskModal && <AddTask closeAddTaskModal = {setOpenAddTaskModal} task= {task} priority={priority} setPriority={setPriority} setTask={setTask} handleSubmit={handleSubmit} highState={highState} mediumState={mediumState} lowState={lowState} setHighState={setHighState} setMediumState={setMediumState} setLowState={setLowState}  />}
     {openEditTaskModal && <EditTask editId={editId} closeEditTaskModal = {setOpenEditTaskModal}/>}
-    {openDeleteTaskModal && <DeleteTask closeDeleteTaskModal = {setOpenDeleteTaskModal}/>}
+    {openDeleteTaskModal && <DeleteTask deleteId = {deleteId} closeDeleteTaskModal = {setOpenDeleteTaskModal}/>}
     
     <Toaster/>
     </div>

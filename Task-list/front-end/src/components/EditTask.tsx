@@ -43,10 +43,10 @@ const EditTask = ({closeEditTaskModal, editId}: EditTaskProps) => {
   
     if(submit.ok) {
       setToastState(true); 
-      console.log("toastState: true");
+     
       
       
-      toast.success("Success");
+      toast.success("Successfully update");
   
       setTimeout(() => {
        
@@ -54,7 +54,7 @@ const EditTask = ({closeEditTaskModal, editId}: EditTaskProps) => {
         
        
         setToastState(false);
-        console.log("toastState: false");
+       
       }, 2000);
     }
   }
