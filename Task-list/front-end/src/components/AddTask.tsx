@@ -54,7 +54,7 @@ const AddTask = ({closeAddTaskModal, task, priority,highState, mediumState, lowS
 
 
   return (
-    <div className='w-[100vw] h-[100vh] absolute top-0 left-0'>
+    <div className='w-[100vw] h-[100vh] fixed top-0 left-0'>
 
     
     <div className=' w-[100vw] h-[100vh] absolute top-0 left-0 flex justify-center items-center  bg-[#443d3d] opacity-[.6]'></div>

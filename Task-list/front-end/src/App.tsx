@@ -61,7 +61,7 @@ const App = () => {
         <h1 className='text-[40px] font-bold'>Task List</h1>
         <button onClick={()=> setOpenAddTaskModal(true)} className='flex items-center justify-center h-[50px] border-none font-bold bg-[#713fff] gap-4 rounded-xl p-2 w-[150px] text-white'><AiOutlinePlus className='text-lg'/>Add Task</button>
       </div>
-    <TaskCard highState ={highState} lowState = {lowState} mediumState= {mediumState} setEditId={setEditId}  setDeleteId={setDeleteId} setOpenEditTaskModal={setOpenEditTaskModal} setOpenDeleteTaskModal={setOpenDeleteTaskModal} task={task} priority={priority} handleSubmit={handleSubmit} />
+      <TaskCard highState ={highState} lowState = {lowState} mediumState= {mediumState} setEditId={setEditId}  setDeleteId={setDeleteId} setOpenEditTaskModal={setOpenEditTaskModal} setOpenDeleteTaskModal={setOpenDeleteTaskModal} task={task} priority={priority} handleSubmit={handleSubmit} />
     </div> 
 
     {openAddTaskModal && <AddTask closeAddTaskModal = {setOpenAddTaskModal} task= {task} priority={priority} setPriority={setPriority} setTask={setTask} handleSubmit={handleSubmit} highState={highState} mediumState={mediumState} lowState={lowState} setHighState={setHighState} setMediumState={setMediumState} setLowState={setLowState}  />}

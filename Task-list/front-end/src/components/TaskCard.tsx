@@ -21,6 +21,7 @@ interface Todo{
   task: string,
   priority: string
   _id: ObjectId
+  progressPercent: number
 }
 
 const TaskCard = ({setOpenEditTaskModal,setEditId,setDeleteId, setOpenDeleteTaskModal, task, priority, highState,mediumState, lowState, handleSubmit}: TaskCardProps) => {
@@ -39,33 +40,56 @@ const TaskCard = ({setOpenEditTaskModal,setEditId,setDeleteId, setOpenDeleteTask
     })
 
     let allTodos = await todosRes.json()
-   
+    let allTodosWithProgress = allTodos.map((todo:Todo) =>({
+      ...todo,
+      progressPercent: progressPercent,
+    }))
 
-    setTodoArray(allTodos)
+    setTodoArray(allTodosWithProgress)
   }
   useEffect(() =>{
     getAllTodos()
   },[handleSubmit])
  
- const handleBtnsProgress = ():void=>{
-  if(toDo){
-    setInProgress(true)
-    setTodo(false)
-    setDone(false)
-    setProgressPercent(50)
-  }
-  if(inProgress) {
-    setDone(true)
-    setInProgress(false)
-    setTodo(false)
-    setProgressPercent(100)
-  }if(done){
-    setTodo(true)
-    setDone(false)
-    setInProgress(false)
-    setProgressPercent(0)
-  }
- }
+//  const handleBtnsProgress = ():void=>{
+//   if(toDo){
+//     setInProgress(true)
+//     setTodo(false)
+//     setDone(false)
+//     setProgressPercent(50)
+//   }
+//   if(inProgress) {
+//     setDone(true)
+//     setInProgress(false)
+//     setTodo(false)
+//     setProgressPercent(100)
+//   }if(done){
+//     setTodo(true)
+//     setDone(false)
+//     setInProgress(false)
+//     setProgressPercent(0)
+//   }
+//  }
+
+const handleBtnsProgress = (todoId: string): void => {
+ 
+  setTodoArray((prevTodos) =>
+    prevTodos.map((todo) => {
+      
+      if (todo._id.toString() === todoId) {
+        
+        if (todo.progressPercent === 0) {
+          return { ...todo, progressPercent: 50 };
+        } else if (todo.progressPercent === 50) {
+          return { ...todo, progressPercent: 100 };
+        } else {
+          return { ...todo, progressPercent: 0 };
+        }
+      } 
+      return todo; 
+    }) 
+  );  
+}; 
 
 
 
@@ -77,18 +101,18 @@ const TaskCard = ({setOpenEditTaskModal,setEditId,setDeleteId, setOpenDeleteTask
       
       return (
            
-        <div className='flex items-center justify-between bg-white  max-h-[140px] h-[90px] my-10 rounded-3xl px-10'>
-        <div className=''>
+        <div className='flex items-center justify-between bg-white  max-h-[140px] h-[90px] my-10  rounded-3xl px-10'>
+        <div className=' w-[30%]'>
           <p className='text-[#94989e]'>Task</p>
           <p>{todo.task}</p>
         </div>
   
-        <div>
+        <div className=' w-[90px]'>
           <p className='text-[#7d8592]'>Priority</p>
           <p className={`font-bold text-lg ${todo.priority==="high" ? "text-[#f73446]": ""} ${todo.priority==="medium" ? "text-[#ffbd21]" :""} ${todo.priority==="low" ? "text-[#0ec10e]":""} `}>{todo.priority}</p>
         </div>
   
-        <div className='relative w-[130px] h-[50px]' onClick={handleBtnsProgress}>
+        <div className='relative w-[150px] h-[50px] ' onClick={()=>handleBtnsProgress(todo._id.toString())}>
           <button className={`bg-[#cbcccd] text-[#4c4c4c] px-3 py-[4px] rounded-lg absolute  ${!toDo ? "hidden" : ""} top-2 left-7`}>
             To Do
           </button>
@@ -103,9 +127,9 @@ const TaskCard = ({setOpenEditTaskModal,setEditId,setDeleteId, setOpenDeleteTask
         </div>
         
   
-        <CircularProgress progressPercent ={progressPercent} />
+        <CircularProgress progressPercent = {todo.progressPercent} />
   
-        <div className='flex gap-6'>
+        <div className='flex gap-6 ms-[20px]'>
           <img onClick={()=>{
             setOpenEditTaskModal(true)  
             setEditId(todo._id.toString())

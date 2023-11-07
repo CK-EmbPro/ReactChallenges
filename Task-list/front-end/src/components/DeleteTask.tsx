@@ -35,7 +35,7 @@ const DeleteTask = ({closeDeleteTaskModal, deleteId}: DeleteTaskProps) => {
   }
 
   return (
-    <div className='w-[100vw] h-[100vh] absolute top-0 left-0'>
+    <div className='w-[100vw] h-[100vh] fixed top-0 left-0 border border-red-400'>
     <div  className=' w-[100vw] h-[100vh] absolute top-0 left-0 flex justify-center items-center  bg-[#443d3d] opacity-[.6]'></div>
     <div className='absolute left-[33vw] top-[35vh] bg-white w-[35vw] flex flex-col gap-5 items-center py-[60px] px-[90px] font-[Poppins] rounded-3xl'>
       <p className=' font-bold text-center text-[20px]'>Are you sure you want to delete this task ?</p>
