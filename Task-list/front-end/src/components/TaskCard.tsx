@@ -51,25 +51,7 @@ const TaskCard = ({setOpenEditTaskModal,setEditId,setDeleteId, setOpenDeleteTask
     getAllTodos()
   },[handleSubmit])
  
-//  const handleBtnsProgress = ():void=>{
-//   if(toDo){
-//     setInProgress(true)
-//     setTodo(false)
-//     setDone(false)
-//     setProgressPercent(50)
-//   }
-//   if(inProgress) {
-//     setDone(true)
-//     setInProgress(false)
-//     setTodo(false)
-//     setProgressPercent(100)
-//   }if(done){
-//     setTodo(true)
-//     setDone(false)
-//     setInProgress(false)
-//     setProgressPercent(0)
-//   }
-//  }
+
 
 const handleBtnsProgress = (todoId: string): void => {
  
@@ -113,15 +95,15 @@ const handleBtnsProgress = (todoId: string): void => {
         </div>
   
         <div className='relative w-[150px] h-[50px] ' onClick={()=>handleBtnsProgress(todo._id.toString())}>
-          <button className={`bg-[#cbcccd] text-[#4c4c4c] px-3 py-[4px] rounded-lg absolute  ${!toDo ? "hidden" : ""} top-2 left-7`}>
+          <button className={`bg-[#cbcccd] text-[#4c4c4c] px-3 py-[4px] rounded-lg absolute  ${todo.progressPercent===0 ? "" : "hidden"} top-2 left-7`}>
             To Do
           </button>
           
-          <button className={`bg-[#cbcccd] text-[#4c4c4c] px-3 py-[4px] rounded-lg absolute ${!inProgress ? "hidden" : ""} left-2 top-2`}>
+          <button className={`bg-[#cbcccd] text-[#4c4c4c] px-3 py-[4px] rounded-lg absolute ${todo.progressPercent===50 ? "" : "hidden"} left-2 top-2`}>
             In progress
           </button>
   
-          <button className={`bg-[#cbcccd] text-[#4c4c4c] px-3 py-[4px] rounded-lg absolute  ${!done ? "hidden" : ""}  left-7 top-2`}>
+          <button className={`bg-[#cbcccd] text-[#4c4c4c] px-3 py-[4px] rounded-lg absolute  ${todo.progressPercent===100 ? "" : "hidden"}  left-7 top-2`}>
             Done
           </button>
         </div>
