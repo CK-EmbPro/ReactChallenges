@@ -46,7 +46,7 @@ const EditTask = ({closeEditTaskModal, editId}: EditTaskProps) => {
      
       
       
-      toast.success("Successfully update");
+      toast.success("Successfully updated");
   
       setTimeout(() => {
        

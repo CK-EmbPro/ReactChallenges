@@ -40,7 +40,7 @@ const App = () => {
   
     if(submit.ok) {
       setToastState(true); 
-      toast.success("Success");
+      toast.success("Successfully added");
   
       setTimeout(() => {
         setOpenAddTaskModal(false);
