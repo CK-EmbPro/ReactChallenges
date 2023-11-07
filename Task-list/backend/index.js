@@ -4,7 +4,7 @@ const cors = require('cors');
 const routes = require("./routes/todoRoutes.js")
 const server = express();
 
-const dbUrl = "mongodb+srv://ckDebMan:Bj8MmSnzrmbrjAoj@cluster0.sknmlkn.mongodb.net/?retryWrites=true&w=majority"
+const dbUrl = "mongodb+srv://ckDebMan:ISTj19oQyN5hBa0J@cluster0.sknmlkn.mongodb.net/?retryWrites=true&w=majority"
 
 server.use(cors({
     origin: "http://localhost:5173"

@@ -40,19 +40,17 @@ const App = () => {
   
     if(submit.ok) {
       setToastState(true); 
-      
-      
-      
       toast.success("Success");
   
       setTimeout(() => {
-       
         setOpenAddTaskModal(false);
-        
-       
         setToastState(false);
         
       }, 2000);
+      setTask("")
+      setLowState(true)
+      setHighState(false)
+      setMediumState(false)
     }
   }
   

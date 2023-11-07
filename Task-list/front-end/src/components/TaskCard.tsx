@@ -119,8 +119,6 @@ const TaskCard = ({setOpenEditTaskModal,setEditId,setDeleteId, setOpenDeleteTask
         </div>
        
       )
-    
-      
     })}
 </div>
    
