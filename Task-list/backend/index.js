@@ -23,7 +23,7 @@ db.once('open',()=>{
 })
 
 server.get("/", (req, res)=>{
-    res.send("Hello world!");
+    res.send("Hello world of render.com");
 })
 
 
