@@ -21,7 +21,7 @@ const App = () => {
  
 
 
-  const baseUrl = "http://localhost:8000"
+  const baseUrl = "https://react-js-chall-backend2.onrender.com/"
 
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
