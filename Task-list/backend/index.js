@@ -7,7 +7,7 @@ const server = express();
 const dbUrl = "mongodb+srv://ckDebMan:ISTj19oQyN5hBa0J@cluster0.sknmlkn.mongodb.net/?retryWrites=true&w=majority"
 
 server.use(cors({
-    origin: "https://task-list-frontend-by-ckdebman.vercel.app/"
+    origin: "*"
 }));
 
 server.use(express.json());
