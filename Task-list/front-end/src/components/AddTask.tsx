@@ -21,7 +21,7 @@ interface AddTaskProps{
 
 const AddTask = ({closeAddTaskModal, task, priority,highState, mediumState, lowState, setTask, setPriority, handleSubmit, setHighState, setMediumState, setLowState}: AddTaskProps) => {
 
-  const baseUrl = "https://react-js-chall-backend2.onrender.com/"
+  const baseUrl = "https://task-list-backend-service.onrender.com"
 
 
 

@@ -32,7 +32,7 @@ const TaskCard = ({setOpenEditTaskModal,setEditId,setDeleteId, setOpenDeleteTask
   const [progressPercent, setProgressPercent] = useState<number>(0)
   const [todoArray, setTodoArray] = useState<Todo[]>([])
 
-  const baseUrl = "https://react-js-chall-backend2.onrender.com/"
+  const baseUrl = "https://task-list-backend-service.onrender.com"
 
   const getAllTodos = async()=>{
     let todosRes = await fetch(`${baseUrl}/getTodos`,{

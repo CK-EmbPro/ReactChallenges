@@ -24,7 +24,7 @@ const EditTask = ({closeEditTaskModal, editId}: EditTaskProps) => {
   })
   const [toastState, setToastState] = useState<boolean >(false)
 
-  const baseUrl = "https://react-js-chall-backend2.onrender.com/"
+  const baseUrl = "https://task-list-backend-service.onrender.com"
 
 
   const handleUpdateSubmit = async (e: FormEvent<HTMLFormElement>) => {

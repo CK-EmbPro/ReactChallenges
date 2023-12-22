@@ -21,7 +21,7 @@ const App = () => {
  
 
 
-  const baseUrl = "https://react-js-chall-backend2.onrender.com/"
+  const baseUrl = "https://task-list-backend-service.onrender.com"
 
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
