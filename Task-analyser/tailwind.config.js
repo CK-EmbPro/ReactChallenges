@@ -30,12 +30,12 @@ export default {
             borderRadius: "8px",
           },
           "&::-webkit-scrollbar-thumb": {
-            backgroundColor: "#048260",
+            backgroundColor: "black",
             borderRadius: "8px",
           },
         },
       };
-      addUtilities(newUtilities, ["responsive"]);
+      addUtilities(newUtilities, ["responsive", "hover"]);
     },
   ],
 }

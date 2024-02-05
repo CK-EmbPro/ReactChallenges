@@ -154,7 +154,7 @@ const Chat = ({
   }, []);
 
   return (
-    <div className="md:mx-auto mb-6 md:w-[75vw] md:h-[65vh] w-[100vw] h-[20em] border border-red-500">
+    <div className="md:mx-auto mb-6 md:w-[75vw] md:h-[65vh] w-[100vw] h-[20em]">
       <textarea
         onChange={handleTextAreaInput}
         value={textAreaValue}

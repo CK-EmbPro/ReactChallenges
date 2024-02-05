@@ -18,7 +18,7 @@ const ResultBox = ({words, sentence, paragraphs, characters, pronouns}:ResultsBo
 
 
   return (
-    <div className='bg-white flex md:justify-between gap-[6vw] md:px-12 px-2  py-3 md:w-[75%] w-[100%] border border-red-500 mt-20  mx-auto mb-5 '>
+    <div className='bg-white flex md:justify-between gap-[6vw] md:px-12 px-2  py-3 md:w-[75%] w-[100%]  mt-20  mx-auto mb-5 '>
         <p className='flex flex-col items-center text-black opacity-50 font-bold md:text-[1.3em] text-[3vw] '>Words <span>{words}</span></p>
         <p className='flex flex-col items-center text-black opacity-50 font-bold md:text-[1.3em] text-[3vw] '>Characters <span>{characters}</span></p>
         <p className='flex flex-col items-center text-black opacity-50 font-bold md:text-[1.3em] text-[3vw] '>Sentences <span>{sentence}</span></p>

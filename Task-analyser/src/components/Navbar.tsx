@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom'
 
 const Navbar = () => {
   return (
-    <div className='border border-red-500 bg-blue-50 flex justify-between px-10 py-4  drop-shadow-md'>
+    <div className=' bg-blue-50 flex justify-between px-10 py-4  drop-shadow-md'>
         <h1 className='font-bold text-lg font-display'>Text Analyzer</h1>
         <div className='flex justify-between w-[20%] items-center '>
           <a target="_blank" href='https://fonts.google.com/specimen/Poppins' className='w-[16%]'><img className='w-full' src={Website} /></a>
