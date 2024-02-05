@@ -154,13 +154,13 @@ const Chat = ({
   }, []);
 
   return (
-    <div className="mx-auto mb-6 w-[75vw] h-[65vh]">
+    <div className="md:mx-auto mb-6 md:w-[75vw] md:h-[65vh] w-[100vw] h-[20em] border border-red-500">
       <textarea
         onChange={handleTextAreaInput}
         value={textAreaValue}
         ref={textAreaRef}
         placeholder="Paste your text here..."
-        className="text-xl w-full h-full resize-none outline-none p-6 textAreaPlaceholder"
+        className="text-xl w-full h-full  resize-none outline-none p-6 textAreaPlaceholder"
       ></textarea>
     </div>
   );

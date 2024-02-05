@@ -12,15 +12,15 @@ interface BottomResultsProps{
 const BottomResults = ({longestWord, setLongestWord, averageReadTime, setAverageReadTime}: BottomResultsProps) => {
     
   return (
-    <div className="bg-white w-[75vw] mx-auto flex justify-around py-3 font-bold  text-black opacity-60 ">
-        <p className='flex items-center gap-1 '>Average Reading Time: 
+    <div className="bg-white border border-red-500 md:w-[75vw] w-[100vw] md:mx-auto flex md:justify-around justify-between py-3 font-bold  text-black opacity-60 min-h-[4.1em] ">
+        <p className='flex justify-center items-center gap-1 border w-[50%]'>Average Reading Time: 
             <span >
             {longestWord ? `~${averageReadTime} minute`:  <AiOutlineMinus/>}
             </span>
         </p>
 
-        <p className='flex items-center gap-1 '>Longest word: 
-            <span >
+        <p className='flex  justify-center items-center gap-1 w-[50%]'>Longest word: 
+            <span className='border border-red-500 w-[70%] overflow-x-auto scrollbar-thin scrollbar-webkit' >
                 {longestWord? longestWord:  <AiOutlineMinus/>}
             </span>
         </p>
