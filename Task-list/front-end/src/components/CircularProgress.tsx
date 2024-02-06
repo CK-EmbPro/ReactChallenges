@@ -9,7 +9,7 @@ const CircularProgress = ({progressPercent}:CircularProgressProps) => {
     
   return (
     <>
-    <div className=' h-[25px] w-[25px] mx-[20px]'>
+    <div className=' h-[25px] w-[25px] border border-red-500 flex items-center justify-center mx-[20px]'>
         <Circle 
         percent={progressPercent}
         strokeColor="blue" //the covering line
